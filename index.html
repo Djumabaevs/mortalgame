@@ -43,6 +43,7 @@
                 <div class="special-container">
                     <div class="special-bar" id="p1-special"></div>
                 </div>
+                <div class="round-dots" id="p1-round-dots"></div>
             </div>
             <div id="round-display">
                 <div id="round-text">ROUND 1</div>
@@ -56,6 +57,7 @@
                 <div class="special-container">
                     <div class="special-bar enemy" id="p2-special"></div>
                 </div>
+                <div class="round-dots" id="p2-round-dots"></div>
             </div>
         </div>
 
@@ -68,18 +70,18 @@
         <!-- Mobile Controls -->
         <div id="mobile-controls" style="display:none">
             <div id="dpad">
-                <div class="dpad-btn" id="btn-up">▲</div>
+                <div class="dpad-btn" id="btn-up">&#9650;</div>
                 <div class="dpad-row">
-                    <div class="dpad-btn" id="btn-left">◄</div>
-                    <div class="dpad-btn" id="btn-down">▼</div>
-                    <div class="dpad-btn" id="btn-right">►</div>
+                    <div class="dpad-btn" id="btn-left">&#9664;</div>
+                    <div class="dpad-btn" id="btn-down">&#9660;</div>
+                    <div class="dpad-btn" id="btn-right">&#9654;</div>
                 </div>
             </div>
             <div id="action-btns">
-                <div class="action-btn punch" id="btn-punch">👊</div>
-                <div class="action-btn kick" id="btn-kick">🦶</div>
-                <div class="action-btn special" id="btn-special">🔥</div>
-                <div class="action-btn block" id="btn-block">🛡️</div>
+                <div class="action-btn punch" id="btn-punch">&#x1F44A;</div>
+                <div class="action-btn kick" id="btn-kick">&#x1F9B6;</div>
+                <div class="action-btn special" id="btn-special">&#x1F525;</div>
+                <div class="action-btn block" id="btn-block">&#x1F6E1;&#xFE0F;</div>
             </div>
         </div>
     </div>
@@ -88,9 +90,9 @@
     <div id="round-end" style="display:none">
         <div id="round-result"></div>
         <div id="wins-display">
-            <span id="p1-wins">🏆 0</span>
+            <span><span class="trophy-icon">&#x1F3C6;</span> <span id="p1-wins">0</span></span>
             <span>VS</span>
-            <span id="p2-wins">0 🏆</span>
+            <span><span id="p2-wins">0</span> <span class="trophy-icon">&#x1F3C6;</span></span>
         </div>
     </div>
 
