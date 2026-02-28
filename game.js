@@ -1,6 +1,18 @@
 // MORTAL FURY — Premium Visual Edition
 // Canvas-based 2D fighting game with detailed visuals
 
+// ============ ROUNDRECT POLYFILL ============
+if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, radii) {
+        const r = typeof radii === 'number' ? radii : (Array.isArray(radii) ? radii[0] : 0);
+        this.moveTo(x + r, y);
+        this.arcTo(x + w, y, x + w, y + h, r);
+        this.arcTo(x + w, y + h, x, y + h, r);
+        this.arcTo(x, y + h, x, y, r);
+        this.arcTo(x, y, x + w, y, r);
+    };
+}
+
 // ============ CONSTANTS ============
 const GRAVITY = 1800;
 const GROUND_Y = 0.78;
@@ -215,9 +227,17 @@ function drawJointCircle(ctx, x, y, r, color) {
 }
 
 function darkenColor(hex, factor) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
+    let r, g, b;
+    if (hex.startsWith('#')) {
+        r = parseInt(hex.slice(1, 3), 16);
+        g = parseInt(hex.slice(3, 5), 16);
+        b = parseInt(hex.slice(5, 7), 16);
+    } else if (hex.startsWith('rgb')) {
+        const m = hex.match(/(\d+)/g);
+        r = parseInt(m[0]); g = parseInt(m[1]); b = parseInt(m[2]);
+    } else {
+        return hex;
+    }
     return `rgb(${Math.floor(r * factor)},${Math.floor(g * factor)},${Math.floor(b * factor)})`;
 }
 
@@ -2275,11 +2295,11 @@ function gameLoop(time) {
 
         // Draw fighters (back one first)
         if (player1.x < player2.x) {
-            player1.draw(ctx);
-            player2.draw(ctx);
+            try { player1.draw(ctx); } catch(e) { console.error('P1 draw error:', e); }
+            try { player2.draw(ctx); } catch(e) { console.error('P2 draw error:', e); }
         } else {
-            player2.draw(ctx);
-            player1.draw(ctx);
+            try { player2.draw(ctx); } catch(e) { console.error('P2 draw error:', e); }
+            try { player1.draw(ctx); } catch(e) { console.error('P1 draw error:', e); }
         }
 
         drawProjectiles(ctx);
