@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>MORTAL FURY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Title Screen -->
+    <div id="title-screen">
+        <h1>MORTAL FURY</h1>
+        <h2>CHOOSE YOUR FIGHTER</h2>
+        <div id="character-select">
+            <div class="char-option" data-char="scorpion">
+                <div class="char-preview scorpion-preview"></div>
+                <span>SHADOW</span>
+                <small>Speed & Fire</small>
+            </div>
+            <div class="char-option" data-char="subzero">
+                <div class="char-preview subzero-preview"></div>
+                <span>FROST</span>
+                <small>Ice & Power</small>
+            </div>
+            <div class="char-option" data-char="liu">
+                <div class="char-preview liu-preview"></div>
+                <span>DRAGON</span>
+                <small>Balanced</small>
+            </div>
+        </div>
+        <p class="start-hint">Select a fighter to begin</p>
+    </div>
+
+    <!-- Fight Screen -->
+    <div id="fight-screen" style="display:none">
+        <!-- HUD -->
+        <div id="hud">
+            <div id="hud-left">
+                <div class="player-name" id="p1-name">SHADOW</div>
+                <div class="health-container">
+                    <div class="health-bar" id="p1-health"></div>
+                </div>
+                <div class="special-container">
+                    <div class="special-bar" id="p1-special"></div>
+                </div>
+            </div>
+            <div id="round-display">
+                <div id="round-text">ROUND 1</div>
+                <div id="timer">60</div>
+            </div>
+            <div id="hud-right">
+                <div class="player-name" id="p2-name">FROST</div>
+                <div class="health-container">
+                    <div class="health-bar enemy" id="p2-health"></div>
+                </div>
+                <div class="special-container">
+                    <div class="special-bar enemy" id="p2-special"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Canvas -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Announcer -->
+        <div id="announcer" style="display:none"></div>
+
+        <!-- Mobile Controls -->
+        <div id="mobile-controls" style="display:none">
+            <div id="dpad">
+                <div class="dpad-btn" id="btn-up">▲</div>
+                <div class="dpad-row">
+                    <div class="dpad-btn" id="btn-left">◄</div>
+                    <div class="dpad-btn" id="btn-down">▼</div>
+                    <div class="dpad-btn" id="btn-right">►</div>
+                </div>
+            </div>
+            <div id="action-btns">
+                <div class="action-btn punch" id="btn-punch">👊</div>
+                <div class="action-btn kick" id="btn-kick">🦶</div>
+                <div class="action-btn special" id="btn-special">🔥</div>
+                <div class="action-btn block" id="btn-block">🛡️</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Round End -->
+    <div id="round-end" style="display:none">
+        <div id="round-result"></div>
+        <div id="wins-display">
+            <span id="p1-wins">🏆 0</span>
+            <span>VS</span>
+            <span id="p2-wins">0 🏆</span>
+        </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="game-over" style="display:none">
+        <h1 id="winner-text"></h1>
+        <h2 id="fatality-text"></h2>
+        <button id="play-again">PLAY AGAIN</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
